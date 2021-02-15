@@ -10,7 +10,7 @@ namespace MNV.Core.Database
 {
     public interface IDataContext : IDisposable
     {
-        DbSet<User> AppUser { get; set; }
+        DbSet<User> User { get; set; }
         DbSet<Role> Role { get; set; }
         DbSet<UserRole> UserRole { get; set; }
         DbSet<RefreshToken> RefreshToken { get; set; }

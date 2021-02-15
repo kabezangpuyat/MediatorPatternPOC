@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Commands\ApplicationInsightsLogExceptionCommand.cs" />
+    <Folder Include="RefreshToken\" />
+    <Folder Include="Role\" />
+    <Folder Include="UserRole\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MNV.Domain\MNV.Domain.csproj" />
-    <ProjectReference Include="..\MNV.Results\MNV.Results.csproj" />
+    <ProjectReference Include="..\MNV.Core\MNV.Core.csproj" />
+    <ProjectReference Include="..\MNV.Mappers\MNV.Mappers.csproj" />
   </ItemGroup>
 
 </Project>

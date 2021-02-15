@@ -21,7 +21,7 @@ namespace MNV.Web.Controllers
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        public async Task<IActionResult> ExecuteQuery(IQuery query)
+        public async Task<IActionResult> ExecuteQuery(object query)
         {
             try
             {

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\RefreshToken\" />
+    <Folder Include="Commands\Role\" />
+    <Folder Include="Commands\UserRole\" />
+    <Folder Include="Commands\User\" />
+    <Folder Include="Queries\RefreshToken\" />
+    <Folder Include="Queries\UserRole\" />
+    <Folder Include="Queries\Role\" />
+  </ItemGroup>
+
+</Project>

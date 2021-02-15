@@ -22,7 +22,7 @@ namespace MNV.Handlers.Commands.User
         }
         public async Task<IResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = await  _dataContext.AppUser.FirstOrDefaultAsync();
+            var user = await  _dataContext.User.FirstOrDefaultAsync();
             //mmaper here
             return new UserResult();
         }
