@@ -4,14 +4,16 @@ using MNV.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MNV.Database.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210216002605_AddDefaultValueToUserKey")]
+    partial class AddDefaultValueToUserKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,7 +81,7 @@ namespace MNV.Database.Migrations
                     b.Property<DateTimeOffset>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetimeoffset")
-                        .HasDefaultValue(new DateTimeOffset(new DateTime(2021, 2, 16, 9, 21, 15, 26, DateTimeKind.Unspecified).AddTicks(8640), new TimeSpan(0, 8, 0, 0, 0)))
+                        .HasDefaultValue(new DateTimeOffset(new DateTime(2021, 2, 16, 8, 26, 5, 545, DateTimeKind.Unspecified).AddTicks(151), new TimeSpan(0, 8, 0, 0, 0)))
                         .HasColumnName("DateCreated");
 
                     b.Property<DateTimeOffset?>("DateModified")
@@ -92,7 +94,6 @@ namespace MNV.Database.Migrations
                     b.Property<Guid>("Key")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("b0b4cb1e-4f00-4902-acc6-a636710fea65"))
                         .HasColumnName("Key");
 
                     b.Property<Guid?>("ModifiedByID")
@@ -134,7 +135,7 @@ namespace MNV.Database.Migrations
                     b.Property<DateTimeOffset>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetimeoffset")
-                        .HasDefaultValue(new DateTimeOffset(new DateTime(2021, 2, 16, 9, 21, 15, 40, DateTimeKind.Unspecified).AddTicks(8779), new TimeSpan(0, 8, 0, 0, 0)))
+                        .HasDefaultValue(new DateTimeOffset(new DateTime(2021, 2, 16, 8, 26, 5, 563, DateTimeKind.Unspecified).AddTicks(1271), new TimeSpan(0, 8, 0, 0, 0)))
                         .HasColumnName("DateCreated");
 
                     b.Property<DateTimeOffset?>("DateModified")
@@ -154,7 +155,7 @@ namespace MNV.Database.Migrations
                     b.Property<Guid>("Key")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("1efb2b3a-7841-4916-abab-371ceff55fd4"))
+                        .HasDefaultValue(new Guid("e56e48a8-c4ef-4fa6-a933-2b447f2de406"))
                         .HasColumnName("Key");
 
                     b.Property<string>("LastName")
@@ -211,7 +212,7 @@ namespace MNV.Database.Migrations
                     b.Property<DateTimeOffset>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetimeoffset")
-                        .HasDefaultValue(new DateTimeOffset(new DateTime(2021, 2, 16, 9, 21, 15, 43, DateTimeKind.Unspecified).AddTicks(7909), new TimeSpan(0, 8, 0, 0, 0)))
+                        .HasDefaultValue(new DateTimeOffset(new DateTime(2021, 2, 16, 8, 26, 5, 566, DateTimeKind.Unspecified).AddTicks(937), new TimeSpan(0, 8, 0, 0, 0)))
                         .HasColumnName("DateCreated");
 
                     b.Property<DateTimeOffset?>("DateModified")
@@ -221,7 +222,6 @@ namespace MNV.Database.Migrations
                     b.Property<Guid>("Key")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("586d4ef8-7e56-4077-b7a4-c84f448f272c"))
                         .HasColumnName("Key");
 
                     b.Property<Guid?>("ModifiedByID")

@@ -12,7 +12,7 @@ namespace MNV.Database.Configurations
             builder.ToTable("User", schema: "dbo").HasKey(x => x.ID);
 
             builder.Property(e => e.ID).HasColumnName("ID").ValueGeneratedOnAdd();
-            builder.Property(e => e.Key).HasColumnName("Key").ValueGeneratedOnAdd();
+            builder.Property(e => e.Key).HasColumnName("Key").HasDefaultValue(Guid.NewGuid());
             builder.Property(e => e.Username).HasColumnName("Username").HasMaxLength(100).IsRequired(true);
             builder.Property(e => e.FirstName).HasColumnName("FirstName").HasMaxLength(100).IsRequired(false);
             builder.Property(e => e.LastName).HasColumnName("LastName").HasMaxLength(100).IsRequired(false);

@@ -20,16 +20,16 @@ namespace MNV.Queries.Role
     public static class GetRoleById
     {
         #region Query
-        public record Query(long id) : IRequest<Response>;
+        public record Query(long id) : IQuery;
         #endregion
 
         #region Handler
-        public class Handler : QueryHandler, IRequestHandler<Query, Response>
+        public class Handler : QueryHandler, IRequestHandler<Query, IRequestResponse>
         {
             public Handler(IDataContext dataContext) : base(dataContext)
             {
             }
-            public async Task<Response> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<IRequestResponse> Handle(Query request, CancellationToken cancellationToken)
             {
                 var result = await _dataContext.Role.Where(x => x.ID == request.id).FirstOrDefaultAsync();
 
@@ -39,7 +39,7 @@ namespace MNV.Queries.Role
         #endregion
 
         #region Response
-        public record Response(long id, string name, string desciption, bool active);
+        public record Response(long id, string name, string desciption, bool active) : IRequestResponse;
         #endregion
 
     }

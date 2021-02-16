@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MNV.Domain\MNV.Domain.csproj" />
-    <ProjectReference Include="..\MNV.Results\MNV.Results.csproj" />
   </ItemGroup>
 
 </Project>

@@ -30,15 +30,15 @@ namespace MNV.Web.Controllers
         [HttpGet("get-by-id/{id}"), AllowAnonymous]
         public async Task<IActionResult> GetById (long id)
         {
-            var response = await _mediator.Send(new GetUserById.Query(id));
-            return response == null ? NotFound(new { message = "Data not found." }) : Ok(response);
+            return await ExecuteQuery(new GetUserById.Query(id))
+                .ConfigureAwait(false);
         }
 
         [HttpPost("create"), AllowAnonymous]
         public async Task<IActionResult> Create(UserViewModel model)
         {
-            var response = await _mediator.Send(new CreateUser.Command(model));
-            return response == null ? NotFound(new { message = "Data not found." }) : Ok(response);
+            return await ExecuteCommand(new CreateUser.Command(model))
+                .ConfigureAwait(false);
         }
         #endregion
     }

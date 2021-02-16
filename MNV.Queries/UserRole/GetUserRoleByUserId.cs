@@ -20,30 +20,30 @@ namespace MNV.Queries.UserRole
     public static class GetUserRoleByUserId
     {
         #region Query
-        public record Query(long userId) : IRequest<Response>;
+        public record Query(long userId) : IQuery;
         #endregion
 
         #region Handler
-        public class Handler : QueryHandler, IRequestHandler<Query, Response>
+        public class Handler : QueryHandler, IRequestHandler<Query, IRequestResponse>
         {
             public Handler(IDataContext dataContext) : base(dataContext)
             {
             }
-            public async Task<Response> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<IRequestResponse> Handle(Query request, CancellationToken cancellationToken)
             {
                 var result = await _dataContext.UserRole
                         .Where(x => x.UserID == request.userId)
-                        .Include(x=>x.User)
-                        .Include(x=>x.Role)
+                        .Include(x => x.User)
+                        .Include(x => x.Role)
                         .FirstOrDefaultAsync();
 
-                return result == null ? null : new Response(result.UserID,result.RoleID,result.Role.Name,$"{result.User.LastName}, {result.User.FirstName}",result.Active);
+                return result == null ? null : new Response(result.UserID, result.RoleID, result.Role.Name, $"{result.User.LastName}, {result.User.FirstName}", result.Active);
             }
         }
         #endregion
 
         #region Response
-        public record Response(long userID, long roleID, string roleName, string fullname, bool active);
+        public record Response(long userID, long roleID, string roleName, string fullname, bool active) : IRequestResponse;
         #endregion
 
     }

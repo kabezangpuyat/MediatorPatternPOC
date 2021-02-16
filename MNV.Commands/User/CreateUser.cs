@@ -2,6 +2,8 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MNV.Core.Database;
+using MNV.Core.Exceptions;
+using MNV.Domain.Constants;
 using MNV.Domain.Models.User;
 using System;
 using System.Collections.Generic;
@@ -21,31 +23,34 @@ namespace MNV.Commands.User
     public static class CreateUser
     {
         #region Command
-        public record Command(UserViewModel model) : IRequest<Response>;
+        public record Command(UserViewModel model) : ICommand;
         #endregion
 
         #region Handler
-        public class Handler : CommandHandler, IRequestHandler<Command, Response>
+        public class Handler : CommandHandler, IRequestHandler<Command, ICommandResponse>
         {
             public Handler(IDataContext dataContext, IMapper mapper) : base(dataContext, mapper)
             {
             }
-            public async Task<Response> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<ICommandResponse> Handle(Command request, CancellationToken cancellationToken)
             {
                 var data = _mapper.Map<Domain.Entities.User>(request.model);
                 _dataContext.User.Add(data);
                 await _dataContext.SaveChangesAsync()
                     .ConfigureAwait(false);
 
+                if (data == null)
+                    throw new EntityNotCreatedException(ExceptionMessageConstants.ErrorCreatingUser);
+
                 var result = _mapper.Map<UserViewModel>(data);
 
-                return result == null ? null : new Response(result);
+                return new Response(data.ID, result);
             }
         }
         #endregion
 
         #region Response
-        public record Response(UserViewModel user);
+        public record Response(long id, UserViewModel user) : ICommandResponse;
         #endregion
 
     }
