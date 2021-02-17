@@ -50,7 +50,16 @@ namespace MNV.Commands.User
         #endregion
 
         #region Response
-        public record Response(long id, UserViewModel user) : ICommandResponse;
+        public class Response : ICommandResponse
+        {
+            public Response(long id, UserViewModel user)
+            {
+                ID = id;
+                User = user;
+            }
+            public long ID { get; set; }
+            public UserViewModel User { get; set; }
+        }
         #endregion
 
     }
