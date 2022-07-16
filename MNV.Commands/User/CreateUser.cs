@@ -44,7 +44,7 @@ namespace MNV.Commands.User
 
                 var result = _mapper.Map<UserViewModel>(data);
 
-                return new Response(data.ID, result);
+                return await Task.FromResult( new Response(data.ID, result) );
             }
         }
         #endregion

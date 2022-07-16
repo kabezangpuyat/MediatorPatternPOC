@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MNV.Commands.User;
 using MNV.Domain.Models.Queries;
 using MNV.Domain.Models.User;
@@ -12,7 +13,7 @@ using MNV.Queries.User;
 
 namespace MNV.Web.Controllers
 {
-    public class UserController : _BaseController
+    public class UserController : BaseController
     {
         #region Constructor(s)
         public UserController(IMediator mediator)  : base (mediator)

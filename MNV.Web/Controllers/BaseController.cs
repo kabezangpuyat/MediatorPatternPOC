@@ -14,11 +14,11 @@ namespace MNV.Web.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class _BaseController : ControllerBase
+    public class BaseController : ControllerBase
     {
         protected readonly IMediator _mediator;
 
-        public _BaseController(IMediator mediator)
+        public BaseController(IMediator mediator)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
